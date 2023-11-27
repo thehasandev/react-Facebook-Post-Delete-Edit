@@ -104,14 +104,14 @@ function App() {
 
                 <div className="mb-5 w-[450px]">
                   <label className="text-balck font-sans"> Name    :  </label>
-                  <input type="text" onChange={handleChangeOne} value={textOne}   placeholder="Please enter your name" className="py-[10px]  pl-[15px] w-[70%] placeholder:italic placeholder:pl-[20px] ml-[53px]"/>
+                  <input type="text" onChange={handleChangeOne} value={textOne}   placeholder="Please enter your name" className="py-[10px] border border-solid border-black/40 rounded-[2px]  pl-[15px] w-[70%] placeholder:italic placeholder:pl-[16px] ml-[53px]"/>
                 </div>
 
                 <div className="mb-5 w-[450px] relative">
 
                   <label className="text-black font-sans">Description : </label>
-                  <input type="text" onChange={handleChangeTwo} value={textTwo} placeholder="Please enter your Description" className="pl-[15px]  placeholder:italic placeholder:pl-[20px] py-[10px]  w-[70%] ml-[14px]" />
-                  {invalid && <p className="text-[red] font-nunito font-bold  absolute top-[7px] right-[8px]"> invalid !</p>}
+                  <input type="text" onChange={handleChangeTwo} value={textTwo} placeholder="Please enter your Description" className="pl-[15px] border border-black/40 rounded-[2px]  placeholder:italic placeholder:pl-[16px] py-[10px]  w-[70%] ml-[14px]" />
+                  {invalid && <p className="text-[red] font-nunito font-bold  absolute top-[8px] right-[38px]"> invalid !</p>}
                 
                 </div>
 
