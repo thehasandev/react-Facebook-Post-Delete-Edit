@@ -84,7 +84,7 @@ function App() {
           <div className="bg-cyan-500 shadow-lg  w-[700px] p-10 mb-[40px] mt-5">
             <Flex>
               <div>
-                <h1 className="text-center text-5xl font-bold text-black font-nunito mb-5">Todo App</h1>
+                <h1 className="text-center text-3xl font-black uppercase text-black font-roboto mb-5">Todo App</h1>
 
                 <div className="mb-5 w-[550px]">
                   <label className="text-balck font-sans"> Name    :  </label>
@@ -119,7 +119,7 @@ function App() {
           {
              noPost 
              ?
-             <h1 className="text-7xl text-white font-nunito font-semibold">No Post</h1> 
+             <h1 className="text-4xl text-white font-nunito font-semibold">No Post</h1> 
              : ""
           }
           </p>
