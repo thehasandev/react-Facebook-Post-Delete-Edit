@@ -17,13 +17,7 @@ function App() {
   let [searchTodo,setSearchTodo] =useState([])
 
 
-  let handleChangeOne = (e) => {
-    setTextOne(e.target.value)
-  };
 
-  let handleChangeTwo = (e) => {
-    setTextTwo(e.target.value)
-  };
 
   let handlePost = () => {
     let arr = [...todo]
@@ -106,17 +100,17 @@ function App() {
           <div className="bg-white shadow-lg rounded-[5px]  w-[600px] p-10 mb-[40px] mt-5">
             <Flex>
               <div>
-                <h1 className="text-center text-3xl uppercase font-black text-black font-roboto mb-5">Todo App</h1>
+                <h2 className="text-center text-3xl uppercase font-black text-black font-roboto mb-5">Todo App</h2>
 
                 <div className="mb-5 md:w-[450px]">
                   <label className="text-balck font-sans"> Name    :  </label>
-                  <input type="text" onChange={handleChangeOne} value={textOne}   placeholder="Please enter your name" className="py-[10px] border border-solid border-black/40 rounded-[2px]  md:pl-[15px] md:w-[70%] placeholder:italic placeholder:pl-[16px] w-[65%] md:ml-[53px] px-2 ml-[38px]"/>
+                  <input type="text" onChange={(e)=>{setTextOne(e.target.value)}} value={textOne}   placeholder="Please enter your name" className="py-[10px] border border-solid border-black/40 rounded-[2px]  md:pl-[15px] md:w-[70%] placeholder:italic placeholder:pl-[16px] w-[65%] md:ml-[53px] px-2 ml-[38px]"/>
                 </div>
 
                 <div className="mb-5 md:w-[450px] relative">
 
                   <label className="text-black font-sans">Description : </label>
-                  <input type="text" onChange={handleChangeTwo} value={textTwo} placeholder="Please enter your Description" className="md:pl-[15px] border border-black/40 rounded-[2px] w-[65%] placeholder:italic placeholder:pl-[16px] py-[10px] px-2  md:w-[70%] md:ml-[14px]" />
+                  <input type="text" onChange={(e)=>{setTextTwo(e.target.value)}} value={textTwo} placeholder="Please enter your Description" className="md:pl-[15px] border border-black/40 rounded-[2px] w-[65%] placeholder:italic placeholder:pl-[16px] py-[10px] px-2  md:w-[70%] md:ml-[14px]" />
                   {invalid && <p className="text-[red] font-nunito font-bold  absolute top-[8px] right-[38px]"> invalid !</p>}
                 
                 </div>
@@ -136,15 +130,15 @@ function App() {
             </Flex>
           </div>
         </Flex>
-        <p>
-          
+
+        <div> 
           {
              noPost 
              ?
              <h1 className="text-4xl text-white font-nunito font-semibold">No Post</h1> 
              : ""
           }
-          </p>
+          </div>
 
         
       <Flex className="gap-5 flex-wrap md:justify-start justify-center mt-[25px] md:mt-0 ">
