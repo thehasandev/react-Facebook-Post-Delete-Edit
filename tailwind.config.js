@@ -10,6 +10,9 @@ export default {
         'roboto': ['Roboto'],
         'paprika': ['Paprika'],
         'nunito': ['Nunito Sans']
+      },
+      backgroundImage: {
+        'banner': "url('/nature.jpg')",
       }
     },
   },

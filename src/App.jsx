@@ -8,6 +8,7 @@ function App() {
 
   let [todo, setTodo] = useState([])
   let [edit, setEdit] = useState(false)
+  console.log(todo);
 
   let [updateIndex, setUpdateIndex] = useState("")
   let [invalid, setInvalid] = useState(false)
@@ -78,13 +79,14 @@ function App() {
   };
 
   return (
-    <div >
+    <div className="bg-banner bg-cover bg-no-repeat h-[1000px] w-full">
+      <div className="bg-black/30 h-full w-full">
       <Container>
         <Flex className="justify-center">
-          <div className="bg-cyan-500 shadow-lg  w-[700px] p-10 mb-[40px] mt-5">
+          <div className="bg-white shadow-lg  w-[700px] p-10 mb-[40px] mt-5">
             <Flex>
               <div>
-                <h1 className="text-center text-3xl font-black uppercase text-black font-roboto mb-5">Todo App</h1>
+                <h1 className="text-center text-5xl font-bold text-black font-nunito mb-5">Todo App</h1>
 
                 <div className="mb-5 w-[550px]">
                   <label className="text-balck font-sans"> Name    :  </label>
@@ -119,7 +121,7 @@ function App() {
           {
              noPost 
              ?
-             <h1 className="text-4xl text-white font-nunito font-semibold">No Post</h1> 
+             <h1 className="text-7xl text-white font-nunito font-semibold">No Post</h1> 
              : ""
           }
           </p>
@@ -127,7 +129,7 @@ function App() {
         
       <Flex className="gap-5 flex-wrap ">
           {todo.map((item, index) => (
-             <div key={index} className="bg-cyan-500 shadow-lg  w-[240px] p-5 ">  
+             <div key={index} className="bg-white rounded-[4px] shadow-lg  w-[240px] p-5 ">  
                   <h1 className="text-5xl text-[black] font-nunito">{item.name}</h1>
                   <p className="text-base text-[black] my-[15px] font-paprika">{item.des}</p>
                   <Flex className="gap-4">
@@ -139,6 +141,8 @@ function App() {
       </Flex>
       
       </Container>
+
+      </div>
     </div>
   );
 }
