@@ -8,11 +8,13 @@ function App() {
 
   let [todo, setTodo] = useState([])
   let [edit, setEdit] = useState(false)
-  console.log(todo);
+  let [seachInput,setSearchInput] =useState("")
+ 
 
   let [updateIndex, setUpdateIndex] = useState("")
   let [invalid, setInvalid] = useState(false)
   let [noPost , setNoPost] = useState(true)
+  let [searchTodo,setSearchTodo] =useState([])
 
 
   let handleChangeOne = (e) => {
@@ -78,25 +80,37 @@ function App() {
     }
   };
 
+  let handleSearch =(e)=>{
+    setSearchInput(e.target.value)
+  let fiterTodo =  todo.filter((item)=>{
+      return item.name.toLowerCase().includes(e.target.value)
+    })
+  setSearchTodo(fiterTodo);  
+  }
+
   return (
-    <div className="bg-banner bg-cover bg-no-repeat h-[1000px] w-full">
-      <div className="bg-black/30 h-full w-full">
+    <div className="bg-banner bg-cover bg-no-repeat h-full w-full ">
+      <div className="bg-black/40  w-full pb-[500px]">
       <Container>
+      <div className="w-[300px] absolute top-32 left-32">
+        <label className="text-balck font-roboto text-xl text-[#111111] font-medium"> Search    :  </label>
+        <input onChange={handleSearch} type="text"    placeholder="Search Todo" className="py-[10px] px-5 rounded-[2px]    placeholder:italic placeholder:pl-[16px]"/>
+      </div>
         <Flex className="justify-center">
-          <div className="bg-white shadow-lg  w-[700px] p-10 mb-[40px] mt-5">
+          <div className="bg-white shadow-lg rounded-[5px]  w-[600px] p-10 mb-[40px] mt-5">
             <Flex>
               <div>
-                <h1 className="text-center text-5xl font-bold text-black font-nunito mb-5">Todo App</h1>
+                <h1 className="text-center text-3xl uppercase font-black text-black font-roboto mb-5">Todo App</h1>
 
-                <div className="mb-5 w-[550px]">
+                <div className="mb-5 w-[450px]">
                   <label className="text-balck font-sans"> Name    :  </label>
-                  <input type="text" onChange={handleChangeOne} value={textOne}   placeholder="Please enter your name" className="py-[10px]  pl-[15px] w-[80%] placeholder:italic placeholder:pl-[20px] ml-[53px]"/>
+                  <input type="text" onChange={handleChangeOne} value={textOne}   placeholder="Please enter your name" className="py-[10px]  pl-[15px] w-[70%] placeholder:italic placeholder:pl-[20px] ml-[53px]"/>
                 </div>
 
-                <div className="mb-5 w-[550px] relative">
+                <div className="mb-5 w-[450px] relative">
 
                   <label className="text-black font-sans">Description : </label>
-                  <input type="text" onChange={handleChangeTwo} value={textTwo} placeholder="Please enter your Description" className="pl-[15px]  placeholder:italic placeholder:pl-[20px] py-[10px]  w-[80%] ml-[14px]" />
+                  <input type="text" onChange={handleChangeTwo} value={textTwo} placeholder="Please enter your Description" className="pl-[15px]  placeholder:italic placeholder:pl-[20px] py-[10px]  w-[70%] ml-[14px]" />
                   {invalid && <p className="text-[red] font-nunito font-bold  absolute top-[7px] right-[8px]"> invalid !</p>}
                 
                 </div>
@@ -121,23 +135,46 @@ function App() {
           {
              noPost 
              ?
-             <h1 className="text-7xl text-white font-nunito font-semibold">No Post</h1> 
+             <h1 className="text-4xl text-white font-nunito font-semibold">No Post</h1> 
              : ""
           }
           </p>
 
         
       <Flex className="gap-5 flex-wrap ">
-          {todo.map((item, index) => (
+
+        {
+          seachInput.length>1 ?
+            searchTodo.length >0 ?
+            searchTodo.map((item, index) => (
+              <div key={index} className="bg-white rounded-[4px] shadow-lg  w-[240px] p-5 ">  
+                   <h1 className="text-5xl text-[black] font-nunito">{item.name}</h1>
+                   <p className="text-base text-[black] my-[15px] font-paprika">{item.des}</p>
+                   <Flex className="gap-4">
+                   <button className="py-[10px] px-[20px] font-normal font-nunito bg-blue-600 rounded-sm text-white" onClick={() =>{handleEdit(item, index);}}>Edit</button>
+                   <button className="py-[10px] px-[20px] font-normal  font-nunito bg-[red] rounded-sm text-white" onClick={() =>{handleDelete(index);}}>Delete</button>
+                   </Flex>  
+             </div>
+           ))
+           : 
+           <h1 className="text-4xl text-white font-nunito font-semibold">Resut Not Found</h1> 
+           :
+           todo.map((item, index) => (
              <div key={index} className="bg-white rounded-[4px] shadow-lg  w-[240px] p-5 ">  
                   <h1 className="text-5xl text-[black] font-nunito">{item.name}</h1>
                   <p className="text-base text-[black] my-[15px] font-paprika">{item.des}</p>
                   <Flex className="gap-4">
-                  <button className="py-[10px] px-[20px] font-normal font-nunito bg-[green] rounded-sm text-white" onClick={() =>{handleEdit(item, index);}}>Edit</button>
+                  <button className="py-[10px] px-[20px] font-normal font-nunito bg-blue-600 rounded-sm text-white" onClick={() =>{handleEdit(item, index);}}>Edit</button>
                   <button className="py-[10px] px-[20px] font-normal  font-nunito bg-[red] rounded-sm text-white" onClick={() =>{handleDelete(index);}}>Delete</button>
                   </Flex>  
             </div>
-          ))}
+          ))
+
+          
+
+          
+        }
+         
       </Flex>
       
       </Container>
